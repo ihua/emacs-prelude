@@ -3,7 +3,7 @@
 ;; Copyright © 2011-2013 Bozhidar Batsov
 ;;
 ;; Author: Bozhidar Batsov <bozhidar@batsov.com>
-;; URL: http://batsov.com/emacs-prelude
+;; URL: https://github.com/bbatsov/prelude
 ;; Version: 1.0.0
 ;; Keywords: convenience
 
@@ -31,9 +31,6 @@
 ;; Boston, MA 02110-1301, USA.
 
 ;;; Code:
-
-;; You know, like Readline.
-(global-set-key (kbd "C-M-h") 'backward-kill-word)
 
 ;; Align your code in a pretty way.
 (global-set-key (kbd "C-x \\") 'align-regexp)
@@ -68,6 +65,11 @@
 ;; A complementary binding to the apropos-command (C-h a)
 (define-key 'help-command "A" 'apropos)
 
+(global-set-key (kbd "C-h C-f") 'find-function)
+(global-set-key (kbd "C-h C-k") 'find-function-on-key)
+(global-set-key (kbd "C-h C-v") 'find-variable)
+(global-set-key (kbd "C-h C-l") 'find-library)
+
 ;; a complement to the zap-to-char command, that doesn't eat up the target character
 (autoload 'zap-up-to-char "misc" "Kill up to, but not including ARGth occurrence of CHAR.")
 (global-set-key (kbd "M-Z") 'zap-up-to-char)
@@ -92,12 +94,14 @@
 (global-set-key (kbd "C-x g") 'magit-status)
 
 (global-set-key (kbd "C-=") 'er/expand-region)
-(global-set-key (kbd "C-c w") (make-repeatable-command 'er/expand-region))
 
 ;; make C-x C-x usable with transient-mark-mode
 (define-key global-map
   [remap exchange-point-and-mark]
   'prelude-exchange-point-and-mark)
+
+(global-set-key (kbd "C-c SPC") 'ace-jump-mode)
+(global-set-key (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
 
 (provide 'prelude-global-keybindings)
 
