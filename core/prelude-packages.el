@@ -3,7 +3,7 @@
 ;; Copyright © 2011-2013 Bozhidar Batsov
 ;;
 ;; Author: Bozhidar Batsov <bozhidar@batsov.com>
-;; URL: http://batsov.com/emacs-prelude
+;; URL: https://github.com/bbatsov/prelude
 ;; Version: 1.0.0
 ;; Keywords: convenience
 
@@ -39,15 +39,14 @@
 (setq package-user-dir (expand-file-name "elpa" prelude-dir))
 (package-initialize)
 
-;; required because of a package.el bug
-(setq url-http-attempt-keepalives nil)
-
 (defvar prelude-packages
-  '(ack-and-a-half elisp-slime-nav exec-path-from-shell expand-region
-                   flycheck gist
-                   guru-mode helm helm-projectile magit magithub melpa
-                   rainbow-mode solarized-theme volatile-highlights yasnippet
-                   zenburn-theme)
+  '(ace-jump-mode ack-and-a-half diminish elisp-slime-nav
+    expand-region flycheck gist
+    git-commit-mode gitconfig-mode gitignore-mode
+    guru-mode helm helm-projectile
+    magit melpa
+    rainbow-mode solarized-theme undo-tree
+    volatile-highlights yasnippet zenburn-theme)
   "A list of packages to ensure are installed at launch.")
 
 (defun prelude-packages-installed-p ()
@@ -92,6 +91,7 @@
     ("\\.sass\\'" sass-mode sass-mode)
     ("\\.scala\\'" scala-mode2 scala-mode)
     ("\\.scss\\'" scss-mode scss-mode)
+    ("\\.slim\\'" slim-mode slim-mode)
     ("\\.yml\\'" yaml-mode yaml-mode)))
 
 ;; markdown-mode doesn't have autoloads for the auto-mode-alist
