@@ -21,8 +21,17 @@
     (setenv "PATH" path-from-shell)
     (setq exec-path (split-string path-from-shell path-separator))))
 (when (equal system-type 'darwin) (set-exec-path-from-shell-PATH))
-;; jump to nrepl windows
-(add-to-list 'same-window-buffer-names "*nrepl*")
-(setq nrepl-popup-stacktraces nil)
-(add-hook 'nrepl-interaction-mode-hook
-          'nrepl-turn-on-eldoc-mode)
+;; ;; jump to nrepl windows
+;; (add-to-list 'same-window-buffer-names "*nrepl*")
+;; (setq nrepl-popup-stacktraces nil)
+;; (add-hook 'nrepl-interaction-mode-hook
+;;           'nrepl-turn-on-eldoc-mode)
+
+(set-default-font "Inconsolata 12")
+(global-set-key [f9] 'copy-region-as-kill)
+(global-set-key [f8] 'compile)
+(global-set-key "\C-c\C-c" 'comment-or-uncomment-region)
+
+(add-hook 'c-mode-common-hook 'google-set-c-style)
+(add-hook 'c++-mode-common-hook 'google-set-c-style)
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
