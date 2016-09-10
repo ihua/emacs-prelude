@@ -27,7 +27,7 @@
 ;; (add-hook 'nrepl-interaction-mode-hook
 ;;           'nrepl-turn-on-eldoc-mode)
 
-(set-default-font "Inconsolata 12")
+(set-default-font "Monaco 12")
 (global-set-key [f9] 'copy-region-as-kill)
 (global-set-key [f8] 'compile)
 (global-set-key "\C-c\C-c" 'comment-or-uncomment-region)
@@ -35,3 +35,6 @@
 (add-hook 'c-mode-common-hook 'google-set-c-style)
 (add-hook 'c++-mode-common-hook 'google-set-c-style)
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+
+;; clojure
+(add-hook 'clojure-mode-hook 'paredit-mode)
